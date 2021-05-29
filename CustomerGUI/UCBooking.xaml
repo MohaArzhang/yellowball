@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="CustomerGUI.UCBooking"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomerGUI"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="650">
+    <Grid x:Name="gridBookNowUC">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="206.5"/>
+            <ColumnDefinition Width="438"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="Beige" Grid.Column="0" Width="206.5" >
+            <Button Background="Beige" Height="100" Width="100" Margin="0, 20, 0, 0">
+                <Image Name="custImage"/>
+            </Button>
+            <Label  Name="lblCustLeft"  Width="120" Height="24" HorizontalContentAlignment="Center" FontFamily="Segoe UI Semibold" Margin="0,10"/>
+            <Button x:Name="btnBack" Content="Back" Height="24" Margin="48,0,53,0" Click="btnBack_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Column="1" Background="White">
+
+            <!-- ***************************COURT COMBO BOX ****************************************-->
+
+            <ComboBox Name="comboCourt" Grid.Column="1" HorizontalAlignment="Left" Margin="200.333,91,0,0" VerticalAlignment="Top" Width="149" Height="33" SelectionChanged="combo_SelectionChanged">
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Court1.jpg" Height="30"></Image>
+                        <TextBlock TextAlignment="Center" Text="Court 1" Width="91" Height="16"/>
+                    </StackPanel>
+                </ComboBoxItem>
+
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Court2.jpg" Height="30"></Image>
+                        <TextBlock TextAlignment="Center" Text="Court 2" Width="91" Height="16"/>
+                    </StackPanel>
+                </ComboBoxItem>
+
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Court3.jpg" Height="30"></Image>
+                        <TextBlock TextAlignment="Center" Text="Court 3" Width="91" Height="16"/>
+                    </StackPanel>
+                </ComboBoxItem>
+
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Court4.jpg" Height="30"></Image>
+                        <TextBlock TextAlignment="Center" Text="Court 4" Width="91" Height="16"/>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <Label Content="Court Number:" Grid.Column="1" HorizontalAlignment="Left" Margin="106.333,91,0,0" VerticalAlignment="Top"/>
+            <Label Content="Date:" Grid.Column="1" HorizontalAlignment="Left" Margin="157.333,129,0,0" VerticalAlignment="Top"/>
+
+            <!-- *************************** DATE PICKER ****************************************-->
+
+            <DatePicker Name="dpDate" SelectedDate="{x:Static sys:DateTime.Now}" Grid.Column="1" HorizontalAlignment="Left" Margin="200.333,130,0,0" VerticalAlignment="Top" Height="30" Width="149" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
+
+            <!-- *************************** SESSION COMBO BOX ****************************************-->
+            <ComboBox Name="comboSession" Grid.Column="1" HorizontalAlignment="Left" Margin="200.333,167,0,0" VerticalAlignment="Top" Width="149" Height="30" SelectionChanged="combo_SelectionChanged">
+                <ComboBoxItem>10:00 AM</ComboBoxItem>
+                <ComboBoxItem>12:00 PM</ComboBoxItem>
+                <ComboBoxItem>2:00 PM</ComboBoxItem>
+                <ComboBoxItem>4:00 PM</ComboBoxItem>
+                <ComboBoxItem>6:00 PM</ComboBoxItem>
+            </ComboBox>
+            <Label Content="Session:" Grid.Column="1" HorizontalAlignment="Left" Margin="142,167,0,0" VerticalAlignment="Top"/>
+            <Label Content="Trainer:" HorizontalAlignment="Left" Margin="147,205,0,0" VerticalAlignment="Top"/>
+
+            <!-- *************************** RADIO BUTTON ****************************************-->
+            <RadioButton x:Name="radioYes" Click="radio_Click" GroupName="Equipment" Content="Yes" HorizontalAlignment="Left" Margin="200,250,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <RadioButton x:Name="radioNo" Click="radio_Click" GroupName="Equipment" Content="No" HorizontalAlignment="Left" Margin="257,250,0,0" VerticalAlignment="Top"/>
+
+
+            <!--********************* COMBOBOX TRAINER BINIDING WITH DATABASE **********************************-->
+            <ComboBox Text="Select or Remove" IsEditable="True" IsReadOnly="False" x:Name="comboTrain" HorizontalAlignment="Left" Margin="200,205,0,0" VerticalAlignment="Top" Width="149" Height="30" DisplayMemberPath="Name" SelectionChanged="combo_SelectionChanged">
+            </ComboBox>
+            <Button x:Name="btnCheckOut" Content="Check out" Margin="200,376,89,60" Click="btnCheckOut_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Label Content="Reservation for:" HorizontalAlignment="Left" Margin="30,45,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="White" Foreground="#FFB2B200" FontSize="14"/>
+            <Label Name="lblCustName" HorizontalAlignment="Left" Margin="157,48,0,0" VerticalAlignment="Top" Width="129" Height="25"/>
+            <Label Content="ID:" HorizontalAlignment="Left" Margin="300,46,0,0" VerticalAlignment="Top" FontWeight="Bold" Background="White" Foreground="#FFB2B200" FontSize="14"/>
+            <Label Name="lblIDnum" HorizontalAlignment="Left" Margin="334,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.304,-0.043" Height="28" Width="38"/>
+            <Label Content="Equipment:" HorizontalAlignment="Left" Margin="124,243,0,0" VerticalAlignment="Top"/>
+            <Label Content="Net Total:" HorizontalAlignment="Left" Margin="124,307,0,0" VerticalAlignment="Top"/>
+            <Label Content="$" HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top"/>
+            <Label Name="lblTotal" Content="0" HorizontalAlignment="Left" Margin="214,307,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
+            <Label Content="$" HorizontalAlignment="Left" Margin="320,307,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblPayment" Content="0" HorizontalAlignment="Left" Margin="334,307,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
+            <Label Content="Payment:" HorizontalAlignment="Left" Margin="263,307,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tbTest" HorizontalAlignment="Left" Margin="35,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="68">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.208"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Button x:Name="btnReset" Content="Reset Inputs" Margin="32,376,257,60" Click="btnReset_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,55 @@
+﻿<Window x:Class="AdminGUI.AddTrainerDLG"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminGUI"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="AddTrainerDLG" Height="405.333" Width="577.667">
+    <Grid x:Name="gridRegister" Background="White" Margin="0,0,-0.333,0.333">
+        <Rectangle Fill="Beige" Margin="27,26,22.667,27.333"/>
+
+        <Label Content="Full Name:" HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Height="26" Width="66"/>
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="91,126,0,0" VerticalAlignment="Top" Height="26" Width="55"/>
+        <Label Content="Postal Code:" HorizontalAlignment="Left" Margin="71,157,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
+        <Label Content="Phone:" HorizontalAlignment="Left" Margin="100,188,0,0" VerticalAlignment="Top" Height="26" Width="46"/>
+
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="161,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Height="23" Margin="161,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbPC" HorizontalAlignment="Left" Height="23" Margin="161,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Height="23" Margin="161,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="btnAddImage" Click="btnAddImage_Click" Width="170" Height="170" Margin="330,119,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid Width="170" Height="170" >
+                <TextBlock x:Name="tbAddImage" Text="Click to Add An Image" TextAlignment="Center" Margin="0,72"/>
+                <Image x:Name="showImage" Stretch="Uniform" />
+            </Grid>
+        </Button>
+
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="161,226,0,0" VerticalAlignment="Top" Width="115" Height="25" Click="btnAdd_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btnUpdate" Content="Update" Visibility="Hidden" HorizontalAlignment="Left" Margin="161,226,0,0" VerticalAlignment="Top" Width="115" Height="25" Click="btnUpdate_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="161,263,0,0" VerticalAlignment="Top" Width="115" Height="25" Click="btnCancel_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Name="tbAddTitle" Content="Add New Trainer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="243,45,183,0" Foreground="Gray" FontSize="18" Width="147"/>
+        <Label Name="tbManageTitle" Content="Manage Trainers" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="242.833,45,183.167,0" Foreground="Gray" FontSize="18" Width="147"/>
+    </Grid>
+</Window>

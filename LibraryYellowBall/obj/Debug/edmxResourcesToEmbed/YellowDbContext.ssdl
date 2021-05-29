@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalProjectWPFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustId" Type="int" Nullable="false" />
+    <Property Name="TrainerId" Type="int" />
+    <Property Name="CourtId" Type="int" Nullable="false" />
+    <Property Name="PayAmount" Type="money" Nullable="false" />
+    <Property Name="BookDate" Type="date" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="SessionTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Equipment" Type="bit" />
+  </EntityType>
+  <EntityType Name="Court">
+    <Key>
+      <PropertyRef Name="CourtId" />
+    </Key>
+    <Property Name="CourtId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourtName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Available" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="PostalCode" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="13" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="RegistrationDate" Type="date" Nullable="false" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Membership" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="TrainerId" />
+    </Key>
+    <Property Name="TrainerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="PostalCode" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="13" />
+    <Property Name="Photo" Type="image" />
+  </EntityType>
+  <Association Name="FK_Booking_Court">
+    <End Role="Court" Type="Self.Court" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Court">
+        <PropertyRef Name="CourtId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CourtId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CustId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Trainer">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="TrainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinalProjectWPFModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Court" EntityType="Self.Court" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Booking_Court" Association="Self.FK_Booking_Court">
+      <End Role="Court" EntitySet="Court" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Customer" Association="Self.FK_Booking_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Trainer" Association="Self.FK_Booking_Trainer">
+      <End Role="Trainer" EntitySet="Trainer" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

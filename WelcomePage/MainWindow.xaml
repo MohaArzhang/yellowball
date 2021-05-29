@@ -1,0 +1,56 @@
+﻿<Window x:Class="WelcomePage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WelcomePage"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Welcome to Yellow Ball" Height="500" Width="650">
+    <Grid x:Name="gridWelcome">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="232*"/>
+                <RowDefinition Height="53*"/>
+                <RowDefinition Height="187*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Row="0">
+            <Image Source="Welcome.jpg" Margin="0,0,-0.333,240"/>
+            <TextBlock HorizontalAlignment="Left" Margin="393,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Trebuchet MS" TextAlignment="Center"><Run Text="Yellow Ball"/><LineBreak/><Run Text="Tennis Courts"/></TextBlock>
+            <Button x:Name="btnBook" Content="Book Now" HorizontalAlignment="Left" Margin="230,251,0,0" VerticalAlignment="Top" Width="207" Height="30" Click="btnBook_Click" FontSize="16">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <TextBox VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="129" Margin="23,318,0,0" TextWrapping="Wrap" Text="Most courts can be booked up to one day in advance on the telephone, or in person with the attendant. You can also book here by this machine.
+
+Click on the map to see it in full-screen, with an index. Wherever possible, the court surface has been listed but this information is not always reliable.
+
+Here are the courts with practice walls:
+
+Mohawk – Mont-Royal
+Poly PAT – Pointe aux Trembles
+Carnigan – Lachine [reported, not confirmed]Most courts limit access to those with sporting passes for that borough, however guest passes are available for purchase (usually during weekdays). Some courts are completely free and open to all the public. When information has been available this has been marked, however you will find if you go out enough, courts are left unattended and it is usually pretty easy to find one close to your area that you neither have to book nor pay for. It is also worth looking into the Acces Montreal card for some savings and other privileges.
+
+Contact us if you have any corrections or new info to add." VerticalAlignment="Top" Width="280" BorderBrush="#FFE1E1E1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="111,291,0,0" TextWrapping="Wrap" Text="Our Courts" VerticalAlignment="Top" FontSize="20" Foreground="#FFA4A4A4"/>
+            <TextBlock HorizontalAlignment="Left" Margin="421,291,0,0" TextWrapping="Wrap" Text="Our Trainers" VerticalAlignment="Top" FontSize="20" Foreground="#FFA4A4A4"/>
+            <TextBox VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="129" Margin="337,318,0,0" TextWrapping="Wrap" Text="1. Trainer 1
+                     2. Trainer 2
+                     3. Trainer 3
+                     5. Trainer 5
+                     6. Trainer 6
+                     7. Trainer 7
+                     8. Trainer 8
+                     9. Trainer 9
+                     " VerticalAlignment="Top" Width="280" BorderBrush="#FFE1E1E1">
+            </TextBox>
+        </Grid>
+
+    </Grid>
+</Window>
